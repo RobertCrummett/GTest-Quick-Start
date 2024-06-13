@@ -2,14 +2,15 @@
 
 #include <limits>
 #include <vector>
+#include <ranges>
 
 #include <gtest/gtest.h>
 namespace {
 
 	TEST(FactorialTest, Negative) {
 		// Test the first couple negative integers
-		std::vector<int> negative_inputs = {-1, -2, -3, -4, -10, -100};
-		for (int arg : negative_inputs) {
+		std::vector<int> inputs {-1, -2, -3, -4, -10, -100};
+		for (int arg : inputs) {
 			EXPECT_EQ(arg, factorial(arg)) << "Expected negative numbers to simply return themselves, but " << arg << " does not do that.";
 		}
 	}
@@ -31,15 +32,12 @@ namespace {
 	}
 
 	TEST(FactorialTest, Positive) {
-		// Test zero case
-		std::vector<int> positive_inputs = {2, 3, 4, 5};
-		std::vector<int> positive_outputs = {2, 6, 24, 120};
+		// Test multiple positives
+		std::vector<int> inputs {2, 3, 4, 5};
+		std::vector<int> outputs {2, 6, 24, 120};
 
-		for (size_t i = 0; i < positive_inputs.size(); i++) {
-			int arg      = positive_inputs.at(i);
-			int expected = positive_outputs.at(i);
-			int recieved = factorial(arg);
-			EXPECT_EQ(expected, recieved) << "Expected factorial(" << arg << ") == " << expected << " but computed " << recieved;
+		for (auto [arg, exp] : std::views::zip(inputs, outputs)) {
+			EXPECT_EQ(exp, factorial(arg)) << "Expected factorial(" << arg << ") == " << exp << " but computed " << factorial(arg);
 		}
 	}
 } // namespace
