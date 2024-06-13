@@ -1,2 +1,2 @@
-# GTest-Quick-Start
-Compile C++ project with GTest, using Conan
+## About GTest-Quick-Start
+Work for tomorrow!
