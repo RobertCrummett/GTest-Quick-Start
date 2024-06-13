@@ -12,4 +12,4 @@ find_package(GTest REQUIRED)
 set(TEST_TARGET test)
 add_executable(${TEST_TARGET} factorial_test.cpp factorial.hpp)
 
-target_link_libraries(${TEST_TARGET} gtest::gtest)
+target_link_libraries(${TEST_TARGET} GTest::gtest GTest::gtest_main)

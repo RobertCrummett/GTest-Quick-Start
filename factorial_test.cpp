@@ -5,6 +5,7 @@
 #include <ranges>
 
 #include <gtest/gtest.h>
+
 namespace {
 
 	TEST(FactorialTest, Negative) {
@@ -40,9 +41,5 @@ namespace {
 			EXPECT_EQ(exp, factorial(arg)) << "Expected factorial(" << arg << ") == " << exp << " but computed " << factorial(arg);
 		}
 	}
-} // namespace
 
-int main(int argc, char** argv) {
-	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
-}
+} // namespace
