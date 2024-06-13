@@ -2,7 +2,14 @@ cmake_minimum_required(VERSION 3.29)
 
 project(gtest_example LANGUAGES CXX)
 
-find_package(GTest REQUIRED)
+# Main target, without testing
 set(TARGET run)
-add_executable(${TARGET} main.cpp)
-target_link_libraries(${TARGET} gtest::gtest)
+add_executable(${TARGET} main.cpp factorial.hpp)
+
+# Test the dependency `factorial.hpp`
+find_package(GTest REQUIRED)
+
+set(TEST_TARGET test)
+add_executable(${TEST_TARGET} factorial_test.cpp factorial.hpp)
+
+target_link_libraries(${TEST_TARGET} gtest::gtest)
